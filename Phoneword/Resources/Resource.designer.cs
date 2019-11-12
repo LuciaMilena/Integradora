@@ -60,17 +60,23 @@ namespace Phoneword
 		public partial class Id
 		{
 			
+			// aapt resource value: 0x7F020004
+			public const int linearLayout1 = 2130837508;
+			
 			// aapt resource value: 0x7F020000
 			public const int PhoneNumberText = 2130837504;
 			
-			// aapt resource value: 0x7F020003
-			public const int textView1 = 2130837507;
+			// aapt resource value: 0x7F020005
+			public const int textView1 = 2130837509;
 			
 			// aapt resource value: 0x7F020001
 			public const int TranslateButton = 2130837505;
 			
 			// aapt resource value: 0x7F020002
 			public const int TranslatedPhoneWord = 2130837506;
+			
+			// aapt resource value: 0x7F020003
+			public const int TranslationHistoryButton = 2130837507;
 			
 			static Id()
 			{
@@ -103,6 +109,9 @@ namespace Phoneword
 			
 			// aapt resource value: 0x7F040000
 			public const int app_name = 2130968576;
+			
+			// aapt resource value: 0x7F040001
+			public const int translationHistory = 2130968577;
 			
 			static String()
 			{
