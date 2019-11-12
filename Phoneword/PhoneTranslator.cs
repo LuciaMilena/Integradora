@@ -1,5 +1,6 @@
-﻿using System.Text;
+using System.Text;
 using System;
+
 namespace Core
 {
     public static class PhonewordTranslator
@@ -15,9 +16,7 @@ namespace Core
             foreach (var c in raw)
             {
                 if (" -0123456789".Contains(c))
-                {
                     newNumber.Append(c);
-                }
                 else
                 {
                     var result = TranslateToNumber(c);
