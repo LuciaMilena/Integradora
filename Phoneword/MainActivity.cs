@@ -12,9 +12,11 @@ namespace Phoneword
     {
         static readonly List<string> phoneNumbers = new List<string>();
 
+        //Ver donde hacer la "carga", el "OnCreate " no va
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
-            base.OnCreate(savedInstanceState);
+            base.OnCreate(savedInstanceState);            
 
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
@@ -40,7 +42,8 @@ namespace Phoneword
                 {
                     translatedPhoneWord.Text = translatedNumber;
                     phoneNumbers.Add(translatedNumber);
-                    translationHistoryButton.Enabled = true;
+                    translationHistoryButton.Enabled = true; // aca se activa el boton del translate history
+                    //aca es donde se agrega el "Guardar"
                 }
             };
 
