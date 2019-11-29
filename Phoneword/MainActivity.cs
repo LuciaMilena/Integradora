@@ -17,18 +17,18 @@ namespace Phoneword
 
         protected override void OnCreate(Bundle savedInstanceState)//
         {
-            base.OnCreate(savedInstanceState);//
+            base.OnCreate(savedInstanceState);
 
             // https://stackoverflow.com/questions/26668509/how-do-i-use-sharedpreferences-in-xamarin-android
 
-            /*ISharedPreferences prefs = PreferenceManager.GetDefaultSharedPreferences(this);//
+            /ISharedPreferences prefs = PreferenceManager.GetDefaultSharedPreferences(this);//
             bool primerUso = prefs.GetBoolean("PrimerUso", true);//
 
             if (primerUso)//
             {
-                //Do things if it's NOT the first run of the app... 
+                // si NO es la primera ejecución de la aplicación ...
 
-                //codigo de lectura
+                Guardar()
 
                 ISharedPreferencesEditor editor = prefs.Edit();//
                 editor.PutBoolean("PrimerUso", false);//
@@ -37,24 +37,24 @@ namespace Phoneword
             }
             else//
             {
-                //Do things if it IS the first run of the app...
-            };*/
+                // si es la primera ejecución de la aplicación ...
+                Cargar(); //igual en mi if si existe lo carga y es automatico la creacion
+            };
 
-            // Set our view from the "main" layout resource
-            SetContentView(Resource.Layout.Main);//
+                SetContentView(Resource.Layout.Main);//
 
-            // Get our UI controls from the loaded layout
+            // controles de interfaz de diseño
             EditText phoneNumberText = FindViewById<EditText>(Resource.Id.PhoneNumberText);//
             Button translateButton = FindViewById<Button>(Resource.Id.TranslateButton);//
             Button translationHistoryButton = FindViewById<Button>(Resource.Id.TranslationHistoryButton);//
             TextView translatedPhoneWord = FindViewById<TextView>(Resource.Id.TranslatedPhoneWord);//
 
-            // Add code to translate number
+            //Parte traductor
             string translatedNumber = string.Empty;//
 
             translateButton.Click += (sender, e) =>//
             {
-                    // Translate user’s alphanumeric phone number to numeric
+                    // Traduce a alfanumerico
                     translatedNumber = PhonewordTranslator.ToNumber(phoneNumberText.Text);//
                 if (string.IsNullOrWhiteSpace(translatedNumber))//
                 {
@@ -77,7 +77,7 @@ namespace Phoneword
             };
         }
 
-        public void Cargar()//
+        public void Cargar()//el if hace que si existe lo cargue automaticamente y sino por defecto lo crea
         {
             if (File.Exists("Contactos.json"))
             {
@@ -102,14 +102,7 @@ namespace Phoneword
     }
 
     
-    //public async Task SaveCountAsync(int count)
-    //{
-    //    var backingFile = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), "count.txt");
-    //    using (var writer = File.CreateText(backingFile))
-    //    {
-    //        await writer.WriteLineAsync(count.ToString());
-    //    }
-    //}
+
 
 
 }
