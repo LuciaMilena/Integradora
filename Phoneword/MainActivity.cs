@@ -21,27 +21,28 @@ namespace Phoneword
 
             // https://stackoverflow.com/questions/26668509/how-do-i-use-sharedpreferences-in-xamarin-android
 
-            /ISharedPreferences prefs = PreferenceManager.GetDefaultSharedPreferences(this);//
-            bool primerUso = prefs.GetBoolean("PrimerUso", true);//
+             ISharedPreferences prefs = PreferenceManager.GetDefaultSharedPreferences(this);//
+             bool primerUso = prefs.GetBoolean("PrimerUso", true);//
 
-            if (primerUso)//
-            {
+              if (primerUso)
+             {
                 // si NO es la primera ejecución de la aplicación ...
 
-                Guardar()
+                Cargar();
 
-                ISharedPreferencesEditor editor = prefs.Edit();//
-                editor.PutBoolean("PrimerUso", false);//
-                // editor.Commit();    // applies changes synchronously on older APIs
-                editor.Apply();//
-            }
-            else//
-            {
-                // si es la primera ejecución de la aplicación ...
-                Cargar(); //igual en mi if si existe lo carga y es automatico la creacion
-            };
+                 ISharedPreferencesEditor editor = prefs.Edit();//
+                 editor.PutBoolean("PrimerUso", false);//
+                 // editor.Commit();    // applies changes synchronously on older APIs
+                 editor.Apply();//
+             }
+            /* else//
+             {
+                 // si es la primera ejecución de la aplicación ...
+                 Cargar(); //igual en mi if si existe lo carga y es automatico la creacion
+             };
 
-                SetContentView(Resource.Layout.Main);//
+                 SetContentView(Resource.Layout.Main);//
+                 */
 
             // controles de interfaz de diseño
             EditText phoneNumberText = FindViewById<EditText>(Resource.Id.PhoneNumberText);//
@@ -84,7 +85,7 @@ namespace Phoneword
                 using (StreamReader lector = new StreamReader("Contactos.json"))//
                 {
                     string ContactosJson = lector.ReadToEnd();//
-                    phoneNumbers = JsonConvert.DeserializeObject<List<string>>(ContactosJson);//
+                    phoneNumbers = JsonConvert.DeserializeObject<List<string>>(ContactosJson);//del texto a objeto
                 }
             }
         }
@@ -94,7 +95,7 @@ namespace Phoneword
             {
                 using (StreamWriter escritor = new System.IO.StreamWriter("Contactos.json"))//
                 {
-                    string ContactosJson = JsonConvert.SerializeObject(phoneNumbers);//
+                    string ContactosJson = JsonConvert.SerializeObject(phoneNumbers);//convierte objeto a texto
                     escritor.Write(ContactosJson);//
                 }
             }
